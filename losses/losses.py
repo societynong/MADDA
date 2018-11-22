@@ -35,7 +35,7 @@ def center_loss(tgt_model, batch, src_model, src_centers, tgt_centers,
 
     #f_N = embeddings_adv[triplets[:, 2]]
 
-    f_N_clf = tgt_model.conv1(batch["X"].cuda()).view(batch["X"].shape[0], -1)
+    f_N_clf = tgt_model.convnet(batch["X"].cuda()).view(batch["X"].shape[0], -1)
     f_N = tgt_model.fc(f_N_clf.detach())
     
     #est.predict(f_N.cpu().numpy())

@@ -28,8 +28,8 @@ def plt_tsne(data,labels,marker='o'):
             marker = 'o'
         else:
             marker = 'x'
-        # plt.text(x, y, s, backgroundcolor=c, fontsize=9)
-        plt.scatter(x,y,c=c,marker=marker)
+        # plt.text(x, y, int(s), fontsize=9)
+        plt.scatter(x,y,s = 100,c=c,marker=marker)
         num = num+1
     plt.xlim(X.min(), X.max())
     plt.ylim(Y.min(), Y.max())

@@ -24,8 +24,8 @@ opt_dis = torch.optim.Adam(disc.parameters(), lr=1e-4, betas=(0.5, 0.9))
 
 
 crit = losses.losses.triplet_loss#torch.nn.CrossEntropyLoss()
-loader_source = model.get_loader_csi('human1.pickle',BATCH_SIZE)
-loader_target = model.get_loader_csi('human2.pickle',BATCH_SIZE)
+loader_source = model.get_loader_csi('zl_loc1.pickle',BATCH_SIZE,10,20)
+loader_target = model.get_loader_csi('zl_loc2.pickle',BATCH_SIZE,10,20)
 # loader_train_source,loader_val_source = fun.load_loaders('mnist',BATCH_SIZE)
 # loader_train_target,loader_val_target = fun.load_loaders('usps',BATCH_SIZE)
 
@@ -48,9 +48,9 @@ for i in range(EPOCH):
     acc = fun.validate(encoder_s,encoder_t,loader_source,loader_target)
     # acc = test.validate(encoder_s, encoder_t, loader_train_source, loader_val_target)
     print("Source >>> Target with out centering acc:{:.4f}".format(acc))
-    fun.train_center(encoder_s,encoder_t,loader_source,loader_target,opt_et)
-    acc = test.validate(encoder_s, encoder_t, loader_source, loader_target)
-    print("Source >>> Target after centering acc:{:.4f}".format(acc))
+    # fun.train_center(encoder_s,encoder_t,loader_source,loader_target,opt_et)
+    # acc = test.validate(encoder_s, encoder_t, loader_source, loader_target)
+    # print("Source >>> Target after centering acc:{:.4f}".format(acc))
     if acc > goal :
         goal = acc
         torch.save(encoder_t.state_dict(),'encoder_t_csi.pkl')

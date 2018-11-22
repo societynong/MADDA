@@ -11,13 +11,13 @@ EPOCH = 200
 encoder_s = model.EmbeddingNet(256).cuda()
 encoder_t = model.EmbeddingNet(256).cuda()
 
-encoder_s.load_state_dict(torch.load('encoder_s_csi.pkl'))
-encoder_t.load_state_dict(torch.load('encoder_t_csi.pkl'))
+encoder_s.load_state_dict(torch.load('encoder_s.pkl'))
+encoder_t.load_state_dict(torch.load('encoder_t.pkl'))
 
-# loader_train_source,loader_val_source = fun.load_loaders('mnist',BATCH_SIZE)
-# loader_train_target,loader_val_target = fun.load_loaders('usps',BATCH_SIZE)
-loader_source = model.get_loader_csi('human1.pickle',BATCH_SIZE)
-loader_target = model.get_loader_csi('human2.pickle',BATCH_SIZE)
+loader_source,_ = fun.load_loaders('mnist',BATCH_SIZE)
+_,loader_target = fun.load_loaders('usps',BATCH_SIZE)
+# c = model.get_lo-ader_csi('zl_loc1.pickle',BATCH_SIZE,10,20)
+# loader_target = model.get_loader_csi('zl_loc2.pickle',BATCH_SIZE,10,20)
 for i in range(EPOCH):
     datazip = zip(loader_source,loader_target,)
     for step,((X_s,ys),(X_t,yt)) in enumerate(datazip):
