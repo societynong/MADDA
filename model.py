@@ -49,7 +49,7 @@ class EmbeddingNet(nn.Module):
             # 1st conv layer
             # input [3 x 30 x 30]
             # output [20 x 12 x 12]
-            nn.Conv2d(1, 20, kernel_size=5),
+            nn.Conv2d(3, 20, kernel_size=5),
             nn.MaxPool2d(kernel_size=2),
             nn.ReLU(),
             # 2nd conv layer
