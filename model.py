@@ -49,7 +49,7 @@ class EmbeddingNet(nn.Module):
             # 1st conv layer
             # input [3 x 30 x 30]
             # output [20 x 12 x 12]
-            nn.Conv2d(3, 20, kernel_size=5),
+            nn.Conv2d(1, 20, kernel_size=5),
             nn.MaxPool2d(kernel_size=2),
             nn.ReLU(),
             # 2nd conv layer
@@ -155,11 +155,11 @@ class Disc(torch.nn.Module):
 import numpy as np
 import pickle
 import torch.utils.data as Data
-def get_loader_csi(name,batch_size):
+def get_loader_csi(name,batch_size,n_classs,n_sample):
     with open(name,'rb') as f:
         dataset = pickle.load(f)
-        X = dataset[0][:10*20]
-        y = dataset[1][:10*20]
+        X = dataset[0][:n_classs*n_sample]
+        y = dataset[1][:n_classs*n_sample]
         X = torch.Tensor(X)
         y = torch.Tensor(y)
         dst = Data.TensorDataset(X,y)
