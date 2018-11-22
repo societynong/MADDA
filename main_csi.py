@@ -48,7 +48,7 @@ for i in range(EPOCH):
     acc = fun.validate(encoder_s,encoder_t,loader_source,loader_target)
     # acc = test.validate(encoder_s, encoder_t, loader_train_source, loader_val_target)
     print("Source >>> Target with out centering acc:{:.4f}".format(acc))
-    # fun.train_center(encoder_s,encoder_t,loader_train_source,loader_train_target,opt_et)
+    fun.train_center(encoder_s,encoder_t,loader_source,loader_target,opt_et)
     acc = test.validate(encoder_s, encoder_t, loader_source, loader_target)
     print("Source >>> Target after centering acc:{:.4f}".format(acc))
     if acc > goal :
