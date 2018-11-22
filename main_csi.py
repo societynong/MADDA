@@ -24,8 +24,8 @@ opt_dis = torch.optim.Adam(disc.parameters(), lr=1e-4, betas=(0.5, 0.9))
 
 
 crit = losses.losses.triplet_loss#torch.nn.CrossEntropyLoss()
-loader_source = model.get_loader_csi('zl_loc1.pickle',BATCH_SIZE)
-loader_target = model.get_loader_csi('zl_loc2.pickle',BATCH_SIZE)
+loader_source = model.get_loader_csi('human1.pickle',BATCH_SIZE)
+loader_target = model.get_loader_csi('human2.pickle',BATCH_SIZE)
 # loader_train_source,loader_val_source = fun.load_loaders('mnist',BATCH_SIZE)
 # loader_train_target,loader_val_target = fun.load_loaders('usps',BATCH_SIZE)
 
